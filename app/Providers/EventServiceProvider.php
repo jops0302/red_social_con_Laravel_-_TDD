@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\CommentCreated;
+use App\Events\ModelLiked;
+use App\Listeners\SendNewCommentNotification;
+use App\Listeners\SendNewLikeNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,9 +19,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        // ModelLiked::class => [
-        //     SendNewLikeNotification::class,
-        // ],
+         ModelLiked::class => [
+             SendNewLikeNotification::class,
+         ],
+         CommentCreated::class => [
+             SendNewCommentNotification::class,
+         ]
     ];
 
     /**

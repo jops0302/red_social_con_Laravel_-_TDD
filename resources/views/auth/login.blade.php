@@ -14,8 +14,14 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label >Email:</label>
-                    <input class="form-control" type="email" name="email" placeholder="Tu nombre ....">
+                    <input  class="form-control" 
+                            type="email" 
+                            name="email" 
+                            placeholder="Tu nombre ...."
+                            value="{{ old('email') }}"
+                            >
                         </div>
+
                         <div class="form-group">
                             <label >Contraseña:</label>
                     <input class="form-control" type="password" name="password" placeholder="Tu contraseña ....">

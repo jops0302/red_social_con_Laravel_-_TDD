@@ -20,7 +20,7 @@ trait HasLikes
              'user_id' => auth()->id()
          ]);
 
-         ModelLiked::dispatch($this);
+         ModelLiked::dispatch($this, auth()->user());
     }
 
     public function unlike(){
@@ -46,4 +46,6 @@ trait HasLikes
      {
         return strtolower(Str::plural(class_basename($this))) . "." . $this->id . ".likes";
      }
+
+     abstract public function path();
 }

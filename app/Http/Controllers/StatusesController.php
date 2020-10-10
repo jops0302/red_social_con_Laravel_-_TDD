@@ -21,6 +21,12 @@ class StatusesController extends Controller
         Status::latest()->paginate());
     }
 
+    public function show(Status $status){
+        return view('statuses.show', [
+            'status' => StatusResource::make($status)
+        ]);
+    }
+
     public function store(Request $request){
 
         $validStatus = $request->validate(['body'=> 'required|min:5']);
@@ -33,4 +39,6 @@ class StatusesController extends Controller
         return $statusResource;
        
     }
+
+   
 }
